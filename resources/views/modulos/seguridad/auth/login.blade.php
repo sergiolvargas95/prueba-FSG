@@ -31,7 +31,7 @@
 
                 <div class="mt-4 text-center">
                     <a href="{{ route('register') }}" class="d-block mb-2">¿No tienes una cuenta? Regístrate</a>
-                    {{-- <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a> --}}
+                    <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
                 </div>
             </div>
         </div>

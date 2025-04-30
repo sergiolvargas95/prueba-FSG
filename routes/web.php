@@ -28,6 +28,13 @@ Route::prefix('seguridad')->group(function () {
 
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+        Route::get('/recuperar', [LoginController::class, 'showPasswordReset'])->name('password.request');
+
+        Route::post('/recuperar', [LoginController::class, 'sendPasswordReset'])->name('password.email');
+
+        Route::get('/verificar-codigo', [LoginController::class, 'verifyCodeForm'])->name('password.verify.code.form');
+
+        Route::post('/verificar-codigo', [LoginController::class, 'verifyCode'])->name('password.verify.code');
     });
 
     /**USUARIO */

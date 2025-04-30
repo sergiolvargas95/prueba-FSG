@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Seguridad;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Models\Seguridad\Usuario;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
@@ -22,6 +26,15 @@ class LoginController extends Controller
         return view('modulos.seguridad.auth.login', ['url' => $url, 'mensajes' => array()]);
     }
 
+    public function showPasswordReset()
+    {
+        return view('modulos.seguridad.auth.recuperar');
+    }
+
+    public function verifyCodeForm(Request $request)
+    {
+        return view('modulos.seguridad.auth.verify-code');
+    }
 
     public function acceso(Request $request)
     {
@@ -96,6 +109,33 @@ class LoginController extends Controller
         }
     }
 
+    public function sendPasswordReset(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:seg_usuario,usuarioEmail',
+        ], [
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'El correo electrónico debe ser válido.',
+            'email.exists' => 'El correo electrónico proporcionado no está registrado en nuestro sistema.',
+        ]);
+
+        $code = rand(100000, 999999);
+
+        DB::table('password_resets')->updateOrInsert(
+            ['email' => $request->email],
+            ['token' => $code, 'created_at' => Carbon::now()]
+        );
+
+        $url = url('seguridad/auth/verificar-codigo?email=' . urlencode($request->email) . '&code=' . $code);
+
+        Mail::raw("Tu código de verificación es: $code\n\nPuedes ingresar directamente desde aquí:\n$url", function ($message) use ($request) {
+            $message->from('noreply@tudominio.com', 'Prueba Four Sides Group');
+            $message->to($request->email)->subject('Recuperación de contraseña');
+        });
+
+        return back()->with('success', 'Te hemos enviado un correo con instrucciones para restablecer tu contraseña.');
+    }
+
     public function logout()
     {
         $idUsuario = session('idUsuario');
@@ -109,4 +149,31 @@ class LoginController extends Controller
         session()->flush();
         return redirect('/');
     }
+
+    public function verifyCode(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email|exists:seg_usuario,usuarioEmail',
+        'code' => 'required|digits:6',
+        'password' => 'required|confirmed|min:6',
+    ]);
+
+    $record = DB::table('password_resets')
+        ->where('email', $request->email)
+        ->where('token', $request->code)
+        ->first();
+
+    if (!$record) {
+        return back()->withErrors(['token' => 'Código incorrecto o expirado.']);
+    }
+
+    DB::table('seg_usuario')
+        ->where('usuarioEmail', $request->email)
+        ->update(['usuarioPassword' => md5($request->password)]);
+
+    DB::table('password_resets')->where('email', $request->email)->delete();
+
+    return redirect()->route('login')->with('success', 'Contraseña actualizada correctamente.');
+}
+
 }
