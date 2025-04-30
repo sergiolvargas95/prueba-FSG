@@ -139,6 +139,77 @@ Abre tu navegador y visita:
 http://localhost:8000
 ```
 
+## 🧭 Guía de Uso
+
+A continuación se describe cómo interactuar con la aplicación, tanto para usuarios regulares como para administradores.
+
+---
+
+### 👤 1. Registro de Usuario
+
+- Accede a la ruta `/register`.
+- Completa el formulario con tu nombre, correo electrónico, contraseña y confirmación de contraseña.
+- Al registrarte, recibirás un correo de confirmación (si está habilitado el servicio de correo).
+  
+![register_user](https://github.com/user-attachments/assets/e34fc39d-809d-4d39-af78-e23dcb227ad3)
+
+---
+
+### 🔐 2. Iniciar Sesión
+
+- Accede a `/login`.
+- Ingresa tu correo y contraseña registrados.
+- Si las credenciales son válidas, serás redirigido a tu panel de usuario.
+
+---
+
+### 🔄 3. Recuperar Contraseña
+
+- Accede a `/forgot-password`.
+- Ingresa tu correo electrónico.
+- Recibirás un correo con un **código de validación**.
+- Introduce el código recibido en la ruta indicada y crea una nueva contraseña.
+
+---
+
+### 🧑‍💼 4. Funcionalidades para Usuario Regular
+
+- Accede a tu perfil desde el panel de navegación.
+- Puedes:
+  - Ver tu información personal.
+  - Cambiar tu foto de perfil.
+  - Modificar tu contraseña desde el área de ajustes.
+- No tienes acceso a datos de otros usuarios.
+
+---
+
+### 🛠️ 5. Funcionalidades para Administradores
+
+- Desde el panel de administración puedes:
+  - Ver el **listado de todos los usuarios registrados**.
+  - Acceder a cada perfil individual.
+  - Subir o actualizar fotos para cada usuario.
+  - Administrar datos básicos de los usuarios si es necesario.
+
+> ⚠️ Solo los usuarios con rol **admin** pueden acceder a estas funcionalidades, protegidas mediante middleware personalizado.
+
+---
+
+### 🚪 6. Cerrar Sesión
+
+- Haz clic en el botón “Cerrar sesión” en el menú superior.
+- La sesión se destruirá y serás redirigido a la pantalla de inicio.
+
+---
+
+### 💡 Recomendaciones
+
+- Usa contraseñas seguras.
+- Mantén tu correo actualizado para recuperación de cuenta.
+- Si tienes rol admin, maneja los datos con responsabilidad.
+
+
+
 ## ✅ Buenas Prácticas Implementadas
 
 - Uso del patrón **MVC** para separar la lógica de presentación y de negocio.
