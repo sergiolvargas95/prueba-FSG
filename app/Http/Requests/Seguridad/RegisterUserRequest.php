@@ -32,24 +32,9 @@ class RegisterUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'usuarioAlias.required' => 'El campo usuario es requerido.',
-            'usuarioAlias.string'   => 'El usuario debe ser una cadena de texto.',
-            'usuarioAlias.max'      => 'El usuario no debe exceder los 75 caracteres.',
-            'usuarioAlias.unique'   => 'El usuario ya se encuentra registrado.',
-
-            'usuarioPassword.required'  => 'El campo contraseña es requerido.',
-            'usuarioPassword.string'    => 'La contraseña debe ser una cadena de texto.',
-            'usuarioPassword.min'       => 'La contraseña debe tener al menos 6 caracteres.',
-            'usuarioPassword.confirmed' => 'La confirmación de la contraseña no coincide.',
-
-            'usuarioNombre.required' => 'El campo nombre completo es requerido.',
-            'usuarioNombre.string'   => 'El nombre completo debe ser una cadena de texto.',
-            'usuarioNombre.max'      => 'El nombre completo no debe exceder los 100 caracteres.',
-
-            'usuarioEmail.required' => 'El campo correo electrónico es requerido.',
-            'usuarioEmail.email'    => 'Debe ingresar un correo electrónico válido.',
-            'usuarioEmail.max'      => 'El correo electrónico no debe exceder los 100 caracteres.',
-            'usuarioEmail.unique'   => 'El correo electrónico ya está registrado.',
+            'foto.required' => 'Debe seleccionar una imagen.',
+            'foto.mimes' => 'Solo se permiten imágenes JPG, JPEG o PNG.',
+            'foto.max' => 'La imagen no debe superar los 2MB.',
         ];
     }
 }

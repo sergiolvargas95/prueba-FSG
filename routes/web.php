@@ -25,10 +25,13 @@ Route::prefix('seguridad')->group(function () {
             RegisterController::class,
             'registerUser'
         ])->name('register.registerUser');
+
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
     });
 
     /**USUARIO */
-    Route::prefix('usuario')->group(function () {
+    Route::prefix('usuario')->middleware('check.login')->group(function () {
         Route::get('/catalogo', [
             UsuarioController::class,
             'catalogo'

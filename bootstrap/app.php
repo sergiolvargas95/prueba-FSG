@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\Acesso;
+use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\Permiso;
 use App\Http\Middleware\SqlInyection;
 use Illuminate\Foundation\Application;
@@ -14,12 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-       
-
         $middleware->alias([
             'acceso' => Acesso::class,
             'SqlInyection' => SqlInyection::class,
             'permiso' => Permiso::class,
+            'check.login' => CheckLogin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

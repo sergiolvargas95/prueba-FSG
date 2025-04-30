@@ -10,6 +10,8 @@
         @endslot
     @endcomponent
 
+    @include('components.common.logout-button')
+
     <div class="mt-4">
         <p class="fw-bold">Hola, {{ session('usuarioNombre') }} ({{ session('usuarioRol') }})</p>
 

@@ -18,11 +18,12 @@ class UsuarioController extends Controller
 
         if ($rol === 'Administrador') {
             $usuarios = Usuario::all();
+            return view('modulos.seguridad.usuario.catalogo', compact('usuarios'));
         } else {
-            $usuarios = collect([Usuario::find($idUsuario)]);
+            $usuario = Usuario::find($idUsuario);
+            return view('modulos.seguridad.usuario.detalle', compact('usuario'));
         }
 
-        return view('modulos.seguridad.usuario.catalogo', compact('usuarios'));
     }
 
     public function detalle($id): View
@@ -35,7 +36,11 @@ class UsuarioController extends Controller
     public function guardarFoto(Request $request, $id)
     {
         $request->validate([
-            'foto' => 'required|image|max:2048',
+            'foto' => 'required|mimes:jpg,jpeg,png|max:2048',
+        ], [
+            'foto.required' => 'Debe seleccionar una imagen.',
+            'foto.mimes' => 'Solo se permiten imágenes JPG, JPEG o PNG.',
+            'foto.max' => 'La imagen no debe superar los 2MB.',
         ]);
 
         $usuario = Usuario::findOrFail($id);

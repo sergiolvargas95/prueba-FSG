@@ -85,6 +85,7 @@ class LoginController extends Controller
                         'usuarioAlias'  => $usuario->usuarioAlias,
                         'usuarioNombre' => $usuario->usuarioNombre,
                         'usuarioRol'    => $rol,
+                        'usuarioAutenticado' => true
                     ]);
 
                     return response()->json(['success' => true, 'message' => 'Excelente logueo con éxito.', 'url' => $url]);
@@ -97,6 +98,14 @@ class LoginController extends Controller
 
     public function logout()
     {
+        $idUsuario = session('idUsuario');
+        if ($idUsuario) {
+            $usuario = Usuario::find($idUsuario);
+            if ($usuario) {
+                $usuario->usuarioConectado = 0;
+                $usuario->save();
+            }
+        }
         session()->flush();
         return redirect('/');
     }
