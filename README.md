@@ -1,4 +1,4 @@
-![loginUser](https://github.com/user-attachments/assets/c058a87a-9a39-4995-a230-348be15bfe7d)# 🧑‍💻 Sistema de Gestión de Usuarios
+# 🧑‍💻 Sistema de Gestión de Usuarios
 
 Aplicación web desarrollada en PHP utilizando Laravel que permite el registro, login y gestión de usuarios con distintos roles (Administrador y Usuario Regular). Este sistema implementa una arquitectura sólida y buenas prácticas de desarrollo, enfocándose en la seguridad, escalabilidad y facilidad de mantenimiento.
 
@@ -171,6 +171,7 @@ A continuación se describe cómo interactuar con la aplicación, tanto para usu
 - Recibirás un correo con un **código de validación**.
 - Introduce el código recibido en la ruta indicada y crea una nueva contraseña.
 
+![cambiocontrasena](https://github.com/user-attachments/assets/6ef2907f-3169-4a24-a9c7-7ee5c51f3465)
 ---
 
 ### 🧑‍💼 4. Funcionalidades para Usuario Regular
@@ -181,6 +182,7 @@ A continuación se describe cómo interactuar con la aplicación, tanto para usu
   - Cambiar tu foto de perfil.
   - Modificar tu contraseña desde el área de ajustes.
 - No tienes acceso a datos de otros usuarios.
+  
 
 ---
 
