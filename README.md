@@ -93,3 +93,48 @@ Tabla auxiliar para el proceso de recuperación de contraseñas.
 | `token`     | Token único para restablecimiento      |
 
 
+## 🧪 Guía de Instalación en Entorno Local
+
+Sigue estos pasos para ejecutar el proyecto en tu máquina local:
+
+### 📁 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/tuusuario/tu-proyecto.git
+cd tu-proyecto
+```
+
+### 📦 2. Instalar dependencias
+
+Asegúrate de tener Composer instalado en tu sistema.
+
+```bash
+composer install
+```
+
+### ⚙️ 3. Copiar el archivo de entorno
+
+```bash 
+cp .env.example .env
+```
+
+#### 🧱 4. Ejecutar migraciones
+Este comando creará todas las tablas necesarias en tu base de datos:
+
+```bash 
+php artisan migrate
+```
+
+###🚀 6. Iniciar el servidor de desarrollo
+Ejecuta el siguiente comando para iniciar el servidor integrado de Laravel:
+
+```bash
+php artisan serve
+```
+
+🌐 8. Acceder a la aplicación
+Abre tu navegador y visita:
+
+```bash
+http://localhost:8000
+```
