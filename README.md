@@ -180,7 +180,6 @@ A continuación se describe cómo interactuar con la aplicación, tanto para usu
 - Puedes:
   - Ver tu información personal.
   - Cambiar tu foto de perfil.
-  - Modificar tu contraseña desde el área de ajustes.
 - No tienes acceso a datos de otros usuarios.
   
 ![actualizarfoto](https://github.com/user-attachments/assets/201b50b4-71c1-46a9-b415-1c25f193c049)
@@ -193,7 +192,6 @@ A continuación se describe cómo interactuar con la aplicación, tanto para usu
   - Ver el **listado de todos los usuarios registrados**.
   - Acceder a cada perfil individual.
   - Subir o actualizar fotos para cada usuario.
-  - Administrar datos básicos de los usuarios si es necesario.
 
 > ⚠️ Solo los usuarios con rol **admin** pueden acceder a estas funcionalidades, protegidas mediante middleware personalizado.
 > 
