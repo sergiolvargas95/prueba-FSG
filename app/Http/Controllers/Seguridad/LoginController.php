@@ -151,29 +151,29 @@ class LoginController extends Controller
     }
 
     public function verifyCode(Request $request)
-{
-    $request->validate([
-        'email' => 'required|email|exists:seg_usuario,usuarioEmail',
-        'code' => 'required|digits:6',
-        'password' => 'required|confirmed|min:6',
-    ]);
+    {
+        $request->validate([
+            'email' => 'required|email|exists:seg_usuario,usuarioEmail',
+            'code' => 'required|digits:6',
+            'password' => 'required|confirmed|min:8',
+        ]);
 
-    $record = DB::table('password_resets')
-        ->where('email', $request->email)
-        ->where('token', $request->code)
-        ->first();
+        $record = DB::table('password_resets')
+            ->where('email', $request->email)
+            ->where('token', $request->code)
+            ->first();
 
-    if (!$record) {
-        return back()->withErrors(['token' => 'Código incorrecto o expirado.']);
+        if (!$record) {
+            return back()->withErrors(['token' => 'Código incorrecto o expirado.']);
+        }
+
+        DB::table('seg_usuario')
+            ->where('usuarioEmail', $request->email)
+            ->update(['usuarioPassword' => md5($request->password)]);
+
+        DB::table('password_resets')->where('email', $request->email)->delete();
+
+        return redirect()->route('login')->with('success', 'Contraseña actualizada correctamente.');
     }
-
-    DB::table('seg_usuario')
-        ->where('usuarioEmail', $request->email)
-        ->update(['usuarioPassword' => md5($request->password)]);
-
-    DB::table('password_resets')->where('email', $request->email)->delete();
-
-    return redirect()->route('login')->with('success', 'Contraseña actualizada correctamente.');
-}
 
 }
