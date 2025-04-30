@@ -141,12 +141,12 @@ http://localhost:8000
 
 ## ✅ Buenas Prácticas Implementadas
 
-- ✔️ Uso del patrón **MVC** para separar la lógica de presentación y de negocio.
-- ✔️ **Middlewares personalizados** para proteger rutas según el rol del usuario.
-- ✔️ **Validaciones robustas** en controladores y formularios para garantizar datos consistentes.
-- ✔️ Envío de correos implementado mediante **servicios SMTP** utilizando las utilidades de Laravel.
-- ✔️ **Migraciones versionadas** para mantener una estructura clara y evolutiva de la base de datos.
-- ✔️ Uso de **Blade Templates** para construir vistas dinámicas, reutilizables y mantenibles.
-- ✔️ Organización **modular del código** para facilitar el mantenimiento y escalabilidad.
-- ✔️ Se evita colocar lógica en las vistas, respetando el **principio de responsabilidad única (SRP)**.
-- ✔️ Control de errores mediante manejo de excepciones y **respuestas claras y amigables** al usuario.
+- Uso del patrón **MVC** para separar la lógica de presentación y de negocio.
+- **Middlewares personalizados** para proteger rutas según el rol del usuario.
+- **Validaciones robustas** en controladores y formularios para garantizar datos consistentes.
+- Envío de correos implementado mediante **servicios SMTP** utilizando las utilidades de Laravel.
+- **Migraciones versionadas** para mantener una estructura clara y evolutiva de la base de datos.
+- Uso de **Blade Templates** para construir vistas dinámicas, reutilizables y mantenibles.
+- Organización **modular del código** para facilitar el mantenimiento y escalabilidad.
+- Se evita colocar lógica en las vistas, respetando el **principio de responsabilidad única (SRP)**.
+- Control de errores mediante manejo de excepciones y **respuestas claras y amigables** al usuario.
