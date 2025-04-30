@@ -125,7 +125,7 @@ Este comando creará todas las tablas necesarias en tu base de datos:
 php artisan migrate
 ```
 
-###🚀 6. Iniciar el servidor de desarrollo
+### 🚀 6. Iniciar el servidor de desarrollo
 Ejecuta el siguiente comando para iniciar el servidor integrado de Laravel:
 
 ```bash
