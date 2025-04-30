@@ -147,7 +147,7 @@ A continuación se describe cómo interactuar con la aplicación, tanto para usu
 
 ### 👤 1. Registro de Usuario
 
-- Accede a la ruta `/register`.
+- Accede a la ruta `/seguridad/auth/register`.
 - Completa el formulario con tu nombre, correo electrónico, contraseña y confirmación de contraseña.
 - Al registrarte, recibirás un correo de confirmación (si está habilitado el servicio de correo).
   
@@ -157,7 +157,7 @@ A continuación se describe cómo interactuar con la aplicación, tanto para usu
 
 ### 🔐 2. Iniciar Sesión
 
-- Accede a `/login`.
+- Accede a `/sguridad/auth/login`.
 - Ingresa tu correo y contraseña registrados.
 - Si las credenciales son válidas, serás redirigido a tu panel de usuario.
   
