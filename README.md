@@ -13,7 +13,7 @@ Aplicación web desarrollada en PHP utilizando Laravel que permite el registro, 
   Los administradores pueden acceder a un listado completo de usuarios registrados y modificar/agregar fotos a cada perfil.
 
 - **Perfil de Usuario (Regular)**  
-  Los usuarios regulares pueden ver y editar su propia información y cambiar su foto de perfil.
+  Los usuarios regulares pueden ver y cambiar su foto de perfil.
 
 - **Recuperación de Contraseña**  
   El sistema cuenta con una funcionalidad de recuperación de contraseña mediante el envío de un código de verificación al correo electrónico del usuario.
@@ -22,12 +22,12 @@ Aplicación web desarrollada en PHP utilizando Laravel que permite el registro, 
 
 ## 🛠️ Stack Tecnológico
 
-- **Backend:** PHP 8.x con Laravel
+- **Backend:** PHP 8.2 con Laravel 11.9
 - **Frontend:** Blade (Laravel) / HTML / CSS
 - **Base de Datos:** MySQL
 - **Autenticación:** Sesiones de PHP personalizadas con middleware
 - **ORM:** Eloquent
-- **Servidor local:** Laravel Artisan o XAMPP
+- **Servidor local:** Laravel Artisan
 
 ---
 
@@ -41,23 +41,55 @@ Además:
 - La seguridad se refuerza mediante sesiones y control de acceso basado en roles (RBAC).
 - Se promueve una estructura limpia de código, reutilizable y mantenible.
 
-> 💡 Aquí puedes incluir una imagen del diagrama de la arquitectura MVC aplicada al proyecto.
+---
+
+## 🗃️ Modelo de Base de Datos
+
+La base de datos del sistema está diseñada para gestionar usuarios, sus roles y el proceso de recuperación de contraseñas. A continuación se describe cada tabla y sus relaciones:
+
+### 🔐 `seg_usuario`
+Contiene la información principal de los usuarios del sistema.
+
+| Campo                   | Descripción                          |
+|-------------------------|--------------------------------------|
+| `idUsuario`             | Identificador único del usuario      |
+| `usuarioAlias`          | Alias del usuario                    |
+| `usuarioPassword`       | Contraseña cifrada del usuario       |
+| `usuarioNombre`         | Nombre completo del usuario          |
+| `usuarioEmail`          | Correo electrónico del usuario       |
+| `usuarioFoto`           | URL de la foto de perfil             |
+| `usuarioEstado`         | Estado del usuario (activo/inactivo) |
+| `usuarioConectado`      | Estado de conexión                   |
+| `usuarioUltimaConexion` | Fecha y hora de última conexión      |
 
 ---
 
-## 🗂️ Estructura del Proyecto (Laravel)
+### 🧑‍💼 `roles`
+Define los roles disponibles en el sistema.
 
-```plaintext
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/        # Controladores MVC
-│   │   ├── Middleware/         # Middleware de autenticación
-│   ├── Models/                 # Modelos de la base de datos
-├── database/
-│   ├── migrations/             # Migraciones para crear las tablas
-├── public/                     # Archivos públicos como imágenes y assets
-├── resources/
-│   ├── views/                  # Vistas Blade del sistema
-├── routes/
-│   └── web.php                 # Definición de rutas web
-├── .env                        # Variables de entorno (DB, Mail, etc)
+| Campo      | Descripción             |
+|------------|-------------------------|
+| `idRol`    | Identificador del rol   |
+| `nombreRol`| Nombre del rol          |
+
+---
+
+### 🔗 `usuario_rol`
+Tabla intermedia para la relación muchos a muchos entre usuarios y roles.
+
+| Campo      | Descripción              |
+|------------|--------------------------|
+| `idUsuario`| ID del usuario           |
+| `idRol`    | ID del rol               |
+
+---
+
+### 🔁 `password_resets`
+Tabla auxiliar para el proceso de recuperación de contraseñas.
+
+| Campo       | Descripción                            |
+|-------------|----------------------------------------|
+| `email`     | Email asociado al usuario              |
+| `token`     | Token único para restablecimiento      |
+
+
