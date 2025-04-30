@@ -1,4 +1,4 @@
-# 🧑‍💻 Sistema de Gestión de Usuarios
+![loginUser](https://github.com/user-attachments/assets/c058a87a-9a39-4995-a230-348be15bfe7d)# 🧑‍💻 Sistema de Gestión de Usuarios
 
 Aplicación web desarrollada en PHP utilizando Laravel que permite el registro, login y gestión de usuarios con distintos roles (Administrador y Usuario Regular). Este sistema implementa una arquitectura sólida y buenas prácticas de desarrollo, enfocándose en la seguridad, escalabilidad y facilidad de mantenimiento.
 
@@ -160,12 +160,13 @@ A continuación se describe cómo interactuar con la aplicación, tanto para usu
 - Accede a `/login`.
 - Ingresa tu correo y contraseña registrados.
 - Si las credenciales son válidas, serás redirigido a tu panel de usuario.
-
+  
+  ![loginUser](https://github.com/user-attachments/assets/6b6605be-455a-41a1-9c1a-aab25ed7b276)
 ---
 
 ### 🔄 3. Recuperar Contraseña
 
-- Accede a `/forgot-password`.
+- Accede a `¿Olvidaste tu contraseña?`.
 - Ingresa tu correo electrónico.
 - Recibirás un correo con un **código de validación**.
 - Introduce el código recibido en la ruta indicada y crea una nueva contraseña.
@@ -199,6 +200,8 @@ A continuación se describe cómo interactuar con la aplicación, tanto para usu
 
 - Haz clic en el botón “Cerrar sesión” en el menú superior.
 - La sesión se destruirá y serás redirigido a la pantalla de inicio.
+  
+![cerrar_sesion](https://github.com/user-attachments/assets/7164c1c0-2ba9-4747-9426-ad7d6f87ef68)
 
 ---
 
