@@ -206,6 +206,14 @@ A continuación se describe cómo interactuar con la aplicación, tanto para usu
   
 ![cerrar_sesion](https://github.com/user-attachments/assets/7164c1c0-2ba9-4747-9426-ad7d6f87ef68)
 
+### 🧑‍🔧 6. Crear Usuario Administrador desde la Consola
+
+Para crear un usuario administrador rápidamente desde la terminal, utiliza el siguiente comando:
+
+```bash
+php artisan make:seg-admin --alias=admin --password=admin --nombre="user-admin" --email=admin@admin.com
+```
+
 ---
 
 ### 💡 Recomendaciones
