@@ -100,7 +100,7 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
 ### 📁 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tuusuario/tu-proyecto.git
+git clone https://github.com/sergiolvargas95/prueba-FSG.git
 cd tu-proyecto
 ```
 
